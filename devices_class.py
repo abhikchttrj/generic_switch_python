@@ -34,14 +34,10 @@ class Refrigerator(Devices):
         self._mode = "AUTO"
 
     def update_parameters(self, **kwargs):
-        for key, val in kwargs.items():
-            if key == "temperature":
-                self._temperature = kwargs["temperature"]
-                print("Updated temperature to {}".format(self._temperature))
-            elif key == "mode":
-                self._mode = kwargs["mode"]
-                print("Updated Mode to {}".format(self._mode))
-        return True
+        for attributes in ["temperature", "mode"]:
+            if kwargs.get(attributes):
+                setattr(self, "_{}".format(attributes), kwargs[attributes])
+                print("Updated {} to {}".format(attributes, getattr(self, "_{}".format(attributes))))
 
     def get_details(self):
         return self.__dict__
@@ -54,14 +50,10 @@ class Television(Devices):
         self._mode = "AUTO"
 
     def update_parameters(self, **kwargs):
-        for key, val in kwargs.items():
-            if key == "channel":
-                self._channel = kwargs["channel"]
-                print("Updated channel to {}".format(self._channel))
-            elif key == "mode":
-                self._mode = kwargs["mode"]
-                print("Updated Mode to {}".format(self._mode))
-        return True
+        for attributes in ["channel", "mode"]:
+            if kwargs.get(attributes):
+                setattr(self, "_{}".format(attributes), kwargs[attributes])
+                print("Updated {} to {}".format(attributes, getattr(self, "_{}".format(attributes))))
 
     def get_details(self):
         return self.__dict__
@@ -74,13 +66,10 @@ class AirConditioner(Devices):
         self._mode = "AUTO"
 
     def update_parameters(self, **kwargs):
-        for key,val in kwargs.items():
-            if key == "temperature":
-                self._temperature = kwargs["temperature"]
-                print("Updated temperature to {}".format(self._temperature))
-            elif key == "mode":
-                self._mode = kwargs["mode"]
-                print("Updated mode to {}:".format(self._mode))
+        for attributes in ["temperature", "mode"]:
+            if kwargs.get(attributes):
+                setattr(self, "_{}".format(attributes), kwargs[attributes])
+                print("Updated {} to {}".format(attributes, getattr(self, "_{}".format(attributes))))
 
     def get_details(self):
         return self.__dict__
@@ -93,13 +82,10 @@ class WashingMachine(Devices):
         self._mode = "AUTO"
 
     def update_parameters(self, **kwargs):
-        for key, val in kwargs.items():
-            if key == "timer":
-                self._timer = kwargs["timer"]
-                print("Updated temperature to {}".format(self._timer))
-            elif key == "mode":
-                self._mode = kwargs["mode"]
-                print("Updated mode to {}:".format(self._mode))
+        for attributes in ["timer", "mode"]:
+            if kwargs.get(attributes):
+                setattr(self, "_{}".format(attributes), kwargs[attributes])
+                print("Updated {} to {}".format(attributes, getattr(self, "_{}".format(attributes))))
 
     def get_details(self):
         return self.__dict__
